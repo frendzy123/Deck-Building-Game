@@ -4,23 +4,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deck {
+public class Deck : MonoBehaviour {
 	private List<GameObject> deck_list;
 	private List<GameObject> current_deck;
 	private List<GameObject> current_hand;
 
-	public Deck() {
+	void Start() {
 		deck_list = new List<GameObject>();
 		current_deck = new List<GameObject>(deck_list);
+
+		for(int i = 0; i < 10; i++) {
+			current_deck.Add(Instantiate(Resources.Load("Prefabs/Strike")) as GameObject);
+			current_deck[i].SetActive(false);
+		}
+
 		current_hand = new List<GameObject>(deck_list);
 		shuffle();
 		draw(5);
 	}
 
+	void Update() {}
+
 	public void draw(int card_draw) {
 		for(int i = 0; i < card_draw; i++) {
 			if(current_deck.Count != 0) {
 				current_hand.Add(current_deck[0]);
+				current_hand[current_hand.Count - 1].SetActive(true);
+				int position_x = -5 + i * 2;
+				current_hand[current_hand.Count - 1].transform.position = new Vector3(position_x, -3, 0);
 				current_deck.RemoveAt(0);
 			}	
 		}
@@ -41,5 +52,9 @@ public class Deck {
 
 	public void remove(int index) {
 		current_deck.RemoveAt(index);
+	}
+
+	public List<GameObject> get_hand() {
+		return current_hand;
 	}
 }

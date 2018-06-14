@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	private Entity entity_class = new Berserker();
+
 	// Use this for initialization
 	void Start () {
 		
