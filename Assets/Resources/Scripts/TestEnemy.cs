@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-	public Entity entity_class = new Berserker();
+public class TestEnemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +11,6 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(entity_class.get_health());
+		
 	}
 }

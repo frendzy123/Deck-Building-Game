@@ -23,7 +23,17 @@ public class Deck : MonoBehaviour {
 		draw(5);
 	}
 
-	void Update() {}
+	void Update() {
+		for(int i = 0; i < current_hand.Count; i++) {
+			if(current_hand[i] == null) {
+				current_hand.RemoveAt(i);
+				for(int k = i; k < current_hand.Count; k++) {
+					int position_x = -5 + k * 2;
+					current_hand[k].transform.position = new Vector3(position_x, -3, 0);
+				}
+			}
+		}
+	}
 
 	public void draw(int card_draw) {
 		for(int i = 0; i < card_draw; i++) {

@@ -12,21 +12,21 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 		returnTo = this.transform.parent;
 		this.transform.SetParent(this.transform.parent.parent); //Takes it outside of hand
-		//Debug.Log ("OnBeginDrag");
+		Debug.Log ("OnBeginDrag");
 
 		GetComponent<CanvasGroup>().blocksRaycasts = false;
 	}
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		//Debug.Log ("Drag");
+		Debug.Log ("Drag");
 
 		this.transform.position = eventData.position; 
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		//Debug.Log ("End drag");
+		Debug.Log ("End drag");
 		this.transform.SetParent(returnTo);
 
 		List<RaycastResult> hits = new List<RaycastResult>();

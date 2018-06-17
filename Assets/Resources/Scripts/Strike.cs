@@ -20,7 +20,8 @@ public class Strike : Card {
 		return 1;
 	}
 
-	public override void card_effect(ref Entity target) {
-		target.add_health(-6);
+	public override void card_effect(GameObject target) {
+		Player player = target.GetComponent(typeof(Player)) as Player;
+		player.entity_class.add_health(-5);
 	}
 }
